@@ -79,6 +79,15 @@ loop do
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
         "
+
+        output_results_man = {}
+        output_results_man[:total_life_yrs] = total_life_yrs
+        output_results_man[:total_life_days] = total_life_days
+        output_results_man[:total_life_hours_remaining] = total_life_hours_remaining
+
+        CSV.open('test.csv', 'a+') do |row|
+            row << output_results_man.values
+        end
         
     elsif sex == "Woman"
         hours_in_day = 24
@@ -96,9 +105,16 @@ loop do
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
         "
+        output_results_woman = {}
+        output_results_woman[:total_life_yrs] = total_life_yrs
+        output_results_woman[:total_life_days] = total_life_days
+        output_results_woman[:total_life_hours_remaining] = total_life_hours_remaining
+
+        CSV.open('test.csv', 'a+') do |row|
+            row << output_results_woman.values
+        end
     end
 
-        final_result = 42
     elsif user_input == "i"
         user_input = gets.chomp.capitalize
         csv = CSV.read('test.csv', headers: true, converters: :all)
