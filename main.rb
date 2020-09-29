@@ -1,4 +1,5 @@
 require "csv"
+require "time"
 
 
 loop do
@@ -84,10 +85,15 @@ loop do
         output_results_man[:total_life_yrs] = total_life_yrs
         output_results_man[:total_life_days] = total_life_days
         output_results_man[:total_life_hours_remaining] = total_life_hours_remaining
-
+        generated_time = {}
+        generated_time[:current_time] = Time.now
         CSV.open('test.csv', 'a+') do |row|
             row << output_results_man.values
         end
+        CSV.open('test.csv', 'a+') do |row|
+            row << generated_time.values
+        end
+
         
     elsif sex == "Woman"
         hours_in_day = 24
@@ -109,9 +115,14 @@ loop do
         output_results_woman[:total_life_yrs] = total_life_yrs
         output_results_woman[:total_life_days] = total_life_days
         output_results_woman[:total_life_hours_remaining] = total_life_hours_remaining
-
+        generated_time = {}
+        generated_time[:current_time] = Time.now
+        
         CSV.open('test.csv', 'a+') do |row|
             row << output_results_woman.values
+        end
+        CSV.open('test.csv', 'a+') do |row|
+            row << generated_time.values
         end
     end
 
