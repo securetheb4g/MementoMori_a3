@@ -73,9 +73,12 @@ loop do
         total_life_hours = total_life_days * 24
         total_life_hours_committed = hrs_pyr_available * total_life_yrs
         total_life_hours_remaining = total_life_hours - total_life_hours_committed
-        puts "In your life you will have roughly #{total_life_hours}hrs to live. 
-        Of those #{total_life_hours_committed}hrs are spent sleeping & working. 
-        This leaves #{total_life_hours_remaining}hrs left of uncommitted time. Crazy huh?"
+        puts "
+        Congratulations based on the information you gave, which considers that you are a Man.
+        You have roughly #{total_life_hours} hrs left to live. 
+        Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
+        This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
+        "
         
     elsif sex == "Woman"
         hours_in_day = 24
@@ -87,9 +90,12 @@ loop do
         total_life_hours = total_life_days * 24
         total_life_hours_committed = hrs_pyr_available * total_life_yrs
         total_life_hours_remaining = total_life_hours - total_life_hours_committed
-        puts "In your life you will have roughly #{total_life_hours}hrs to live. 
-        Of those #{total_life_hours_committed}hrs are spent sleeping & working. 
-        This leaves #{total_life_hours_remaining}hrs left of uncommitted time. Crazy huh?"
+        puts "
+        Congratulations based on the information you gave, which considers that Women live longer.
+        You have roughly #{total_life_hours} hrs left to live. 
+        Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
+        This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
+        "
     end
 
         final_result = 42
