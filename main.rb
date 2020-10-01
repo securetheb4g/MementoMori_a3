@@ -3,12 +3,18 @@ require "time"
 require 'colorize'
 require 'colorized_string'
 require "tty-box"
+require "tty-link"
 gem 'colorize'
 gem 'tty-box'
+gem 'tty-link'
 
 loop do
     menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Improvement Suggestions 'i'\n Lookup old user data 'l'\n Exit Program 'x'\n")
     puts menubox
+    def signature
+    puts TTY::Link.link_to("Shameless self promotion", "https://samsonblackburn.netlify.app/index.html")
+    end
+    signature
     # puts "Options".colorize(:white)
     # puts "Generate life expectancy 'g'".colorize(:green)
     # puts "improvement suggestions 'i'".colorize(:light_blue) 
@@ -113,7 +119,7 @@ loop do
         total_life_hours = total_life_days * 24
         total_life_hours_committed = hrs_pyr_available * total_life_yrs
         total_life_hours_remaining = total_life_hours - total_life_hours_committed
-        calcboxsuccess = TTY::Box.success("Congratulations your lifespan has been calulated below.")
+        calcboxsuccess = TTY::Box.success("Congratulations your lifespan has been calculated below.")
         puts calcboxsuccess
         puts "
         As a Woman:
@@ -137,7 +143,8 @@ loop do
     end
 
     elsif user_input == "i"
-        user_input = gets.chomp.capitalize        csv = CSV.read('test.csv', headers: true, converters: :all)
+        user_input = gets.chomp.capitalize
+        csv = CSV.read('test.csv', headers: true, converters: :all)
         csv_new = csv.find { |csv_values| user_input == csv_values["name"]}
         # csv.each {|csv_values| p csv_values}
         puts "Enter which previous data you would like to change:"
