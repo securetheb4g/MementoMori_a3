@@ -2,14 +2,18 @@ require "csv"
 require "time"
 require 'colorize'
 require 'colorized_string'
+require "tty-box"
 gem 'colorize'
+gem 'tty-box'
 
 loop do
-    puts "Options".colorize(:white)
-    puts "Generate life expectancy 'g'".colorize(:green)
-    puts "improvement suggestions 'i'".colorize(:light_blue) 
-    puts "lookup old user data 'l'".colorize(:red)
-    puts "exit program 'x'".colorize(:white)
+    menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Improvement Suggestions 'i'\n Lookup old user data 'l'\n Exit Program 'x'\n")
+    puts menubox
+    # puts "Options".colorize(:white)
+    # puts "Generate life expectancy 'g'".colorize(:green)
+    # puts "improvement suggestions 'i'".colorize(:light_blue) 
+    # puts "lookup old user data 'l'".colorize(:red)
+    # puts "exit program 'x'".colorize(:white)
     user_input = gets.chomp
     if user_input == "g"
         namehash = {}  
@@ -76,8 +80,10 @@ loop do
         total_life_hours = total_life_days * 24
         total_life_hours_committed = hrs_pyr_available * total_life_yrs
         total_life_hours_remaining = total_life_hours - total_life_hours_committed
+        calcboxsuccess = TTY::Box.success("Congratulations your lifespan has been calulated below.")
+        puts calcboxsuccess
         puts "
-        Congratulations based on the information you gave, which considers that you are a Man.
+        As a Man:
         You have roughly #{total_life_hours} hrs left to live. 
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
@@ -107,8 +113,10 @@ loop do
         total_life_hours = total_life_days * 24
         total_life_hours_committed = hrs_pyr_available * total_life_yrs
         total_life_hours_remaining = total_life_hours - total_life_hours_committed
+        calcboxsuccess = TTY::Box.success("Congratulations your lifespan has been calulated below.")
+        puts calcboxsuccess
         puts "
-        Congratulations based on the information you gave, which considers that Women live longer.
+        As a Woman:
         You have roughly #{total_life_hours} hrs left to live. 
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
