@@ -1,13 +1,15 @@
 require "csv"
 require "time"
-
+require 'colorize'
+require 'colorized_string'
+gem 'colorize'
 
 loop do
-    puts "Options"
-    puts "Generate life expectancy 'g'"
-    puts "improvement suggestions 'i'" 
-    puts "lookup old user data 'l'"
-    puts "exit program 'x'"
+    puts "Options".colorize(:white)
+    puts "Generate life expectancy 'g'".colorize(:green)
+    puts "improvement suggestions 'i'".colorize(:light_blue) 
+    puts "lookup old user data 'l'".colorize(:red)
+    puts "exit program 'x'".colorize(:white)
     user_input = gets.chomp
     if user_input == "g"
         namehash = {}  
@@ -17,30 +19,30 @@ loop do
         avg_life_woman = 85
         # age = gets.chomp.to_i
         # anger = 1
-        puts "Please enter your name."
+        puts "Please enter your name.".colorize(:white)
         name = gets.chomp.capitalize
         namehash[:name] = name
-        puts "thanks #{name}"
-        puts "Are you a Man or Woman?"
+        puts "thanks #{name}".colorize(:green)
+        puts "Are you a Man or Woman?".colorize(:white)
         sex = gets.chomp.capitalize
         namehash[:sex] = sex
-        puts "you chose #{sex}"
-        puts "What's your age?"
+        puts "you chose #{sex}".colorize(:green)
+        puts "What's your age?".colorize(:white)
         age = gets.chomp.to_i
         namehash[:age] = age
-        puts "your input age was #{age}"
-        puts "Please enter the number of hours you sleep roughly:"
+        puts "your input age was #{age}".colorize(:green)
+        puts "Please enter the number of hours you sleep roughly:".colorize(:white)
         daily_sleep = gets.chomp.to_i
         namehash[:daily_sleep] = daily_sleep
-        puts "You said you sleep about #{daily_sleep}hrs per day."
-        puts "Please enter the number of hours you work each day roughly:"
+        puts "You said you sleep about #{daily_sleep}hrs per day.".colorize(:green)
+        puts "Please enter the number of hours you work each day roughly:".colorize(:white)
         hours_worked = gets.chomp.to_i
         namehash[:hours_worked] = hours_worked
-        puts "You said you work about #{hours_worked}hrs per day"
-        puts "Are you quick to anger? Please type yes or no"
+        puts "You said you work about #{hours_worked}hrs per day".colorize(:green)
+        puts "Are you quick to anger? Please type yes or no".colorize(:white)
         anger = gets.chomp.downcase
         namehash[:anger] = anger
-        puts "You answered #{anger}"
+        puts "You answered #{anger}".colorize(:green)
 
         CSV.open('test.csv', 'a+') do |row|
             row << namehash.values
@@ -79,7 +81,7 @@ loop do
         You have roughly #{total_life_hours} hrs left to live. 
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
-        "
+        ".colorize(:blue)
 
         output_results_man = {}
         output_results_man[:total_life_yrs] = total_life_yrs
@@ -110,7 +112,7 @@ loop do
         You have roughly #{total_life_hours} hrs left to live. 
         Of those you indicated #{total_life_hours_committed} hrs will be spent sleeping & working. 
         This leaves #{total_life_hours_remaining} hrs left of uncommitted time. Crazy huh?
-        "
+        ".colorize(:light_blue)
         output_results_woman = {}
         output_results_woman[:total_life_yrs] = total_life_yrs
         output_results_woman[:total_life_days] = total_life_days
@@ -127,8 +129,7 @@ loop do
     end
 
     elsif user_input == "i"
-        user_input = gets.chomp.capitalize
-        csv = CSV.read('test.csv', headers: true, converters: :all)
+        user_input = gets.chomp.capitalize        csv = CSV.read('test.csv', headers: true, converters: :all)
         csv_new = csv.find { |csv_values| user_input == csv_values["name"]}
         # csv.each {|csv_values| p csv_values}
         puts "Enter which previous data you would like to change:"
