@@ -1,4 +1,4 @@
-name,sex,age,daily_sleep,hours_worked,anger,total_life_yrs,total_life_days,total_life_hours_remaining,current_time,entry_id
+entry_id, name, sex, age, daily_sleep, hours_worked, anger, total_life_yrs, total_life_days, total_life_hours_remaining, current_time,
 Sam,Man,29,29,29,yes
 Terry,Man,29,29,29,yes
 Ken,Man,29,29,29,yes
@@ -165,3 +165,5 @@ Perry,Man,18,5,7,no
 532,"[""Stan"", ""Man"", 9, 8, 4, ""no""]","[82, 29930, 359160]",[2020-10-02 23:14:11.4578844 +1000]
 650,"[""Jeff"", ""Man"", 44, 9, 4, ""no""]","[47, 17155, 188705]",[2020-10-02 23:20:24.9539696 +1000]
 485,"[""Slick rick"", ""Man"", 32, 9, 4, ""no""]","[59, 21535, 236885]",[2020-10-02 23:21:21.2935991 +1000]
+358,"[""Beth"", ""Woman"", 17, 9, 2, ""no""]","[79, 28835, 374855]",[2020-10-02 23:44:07.5116073 +1000]
+605,"[""Beth"", ""Woman"", 17, 9, 2, ""no""]","[79, 28835, 374855]",[2020-10-02 23:45:16.4986978 +1000]

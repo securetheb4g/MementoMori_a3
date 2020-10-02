@@ -20,7 +20,7 @@ loop do
   #creates options menu
   menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Improvement Suggestions 'i'\n Run a poem about Time 'l'\n Exit Program 'x'\n")
   puts menubox
-  #produces a random entry ID for user reference
+  #produces a random entry ID for user results reference in function 2
   entry_id = SecureRandom.random_number(1000)
 
   # puts "Options".colorize(:white)
@@ -141,17 +141,17 @@ loop do
       puts "Uh oh #{name} #{total_life_hours_committed} hrs will be spent sleeping & working."
       sleep 2
       puts "So you've probably got #{total_life_hours_remaining} hrs left to spare at best."
-      sleep 5
-      puts signature
-      sleep 5
-
+      sleep 3
+      puts "These results are being saved under your unique information id: #{entry_id}"
+      puts "Do not lose this number. Without it, retrieval of past data is not possible."
+      
       output_results_woman = {}
       output_results_woman[:total_life_yrs] = total_life_yrs
       output_results_woman[:total_life_days] = total_life_days
       output_results_woman[:total_life_hours_remaining] = total_life_hours_remaining
       generated_time = {}
       generated_time[:current_time] = Time.now
-
+      
       #   CSV.open("test.csv", "a+") do |row|
       #     row << output_results_woman.values
       #   end
@@ -161,9 +161,11 @@ loop do
       pusharrays_csv_woman = entry_id, namehash.values, output_results_woman.values, generated_time.values
       CSV.open("test.csv", "a+") do |row|
         row << pusharrays_csv_woman
-      end
     end
-  elsif user_input == "i"
+    sleep 10
+    puts signature
+end
+elsif user_input == "i"
     # puts "Please enter the first name of the Life Calculation you want to read:"
     # csv = CSV.read('test.csv', headers: true, converters: :all)
     # # countrow = 0
