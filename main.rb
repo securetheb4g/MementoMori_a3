@@ -166,16 +166,38 @@ loop do
     puts signature
 end
 elsif user_input == "i"
-    # puts "Please enter the first name of the Life Calculation you want to read:"
-    # csv = CSV.read('test.csv', headers: true, converters: :all)
+    csv_new = CSV.read('test.csv', headers: true,)
+    puts "Please enter the entry_id of the Life Calculation you want to read:"
+    idlookup = gets.chomp
+    csv_new.each do |csv_new_row|
+        temp_entry_id_row = csv_new_row[0]
+    if idlookup == temp_entry_id_row
+        puts "#{csv_new_row}"
+    end
+end
+# result = []
+# p csv
+# if csv.fetch(0, "nope") == idlookup
+#     p "win"
+# else
+#     p "lose"
+# end
+
+# csv.each_with_index do |row, i|
+#     row.each_with_index do |value, j|
+#         result << [i, j] if value == idlookup
+#     end
+# end
+
+
     # # countrow = 0
     # countcolumn = 0
     #CSV[0] gives the first row, .each makes a = [header, csv[0][count]] where count = for loop iteration
     # p csv[x][p]
     # p csv[3][2]
     # tmpohy = ["21535", "dsfuah", "juajfd"]
-    # p csv[0]
-    # p csv[][].index { |element| element == "21535" }
+    # # p csv[0]
+    # p csv[0][0].index { |element| element == "21535" }
     # csv[1].each_with_index do |a|
     #     # p countcolumn
     #     if a[1] == "Terry"
@@ -191,6 +213,12 @@ elsif user_input == "i"
     # end
     # p csv[0]
     # table = CSV.parse(File.read("test.csv"), headers: true)
+    # p table[0][0]
+    # datatoupdate = Array.new
+
+    # table.foreach('test.csv' converters: :numeric) do |row|
+    #     datatoupdate << row [0]
+    # end
     # # csv_new = csv.find { |csv_values| user_input == csv_values["name"]}
     # # csv.each {|csv_values| p csv_values}
     # # table.methods
@@ -206,7 +234,20 @@ elsif user_input == "i"
     # puts "What would you like to change it to?"
     # newdata = gets.chomp
   elsif user_input == "l"
-    puts poem1
+    csv_new = CSV.read('test.csv', headers: true,)
+    puts "Please enter the entry_id of the Life Calculation you want to delete:"
+    puts "Please note this is permanent."
+    idlookup = gets.chomp
+    csv_new.each do |csv_new_row|
+        temp_entry_id_row = csv_new_row[0]
+    if idlookup == temp_entry_id_row
+        puts "#{csv_new_row}"
+        to_delete = Array.new
+        CSV.open("test.csv", "a+") do |row|
+            to_delete << csv_new_row
+        end
+    end
+end
   elsif user_input == "x"
     exit
   else
