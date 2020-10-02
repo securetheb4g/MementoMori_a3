@@ -3,22 +3,26 @@ require "time"
 require "colorize"
 require "tty-box"
 require "tty-link"
+require "tty-font"
 require "securerandom"
 require_relative "poems.rb"
 gem "colorize"
 gem "tty-box"
 gem "tty-link"
+gem "tty-font"
 
 loop do
   puts "\n"
-
+  font = TTY::Font.new(:starwars)
+  pastel = Pastel.new
+puts pastel.blue(font.write("    MEMENTO   MORI      "))
   #puts HTML links
   def signature
     puts TTY::Link.link_to("Brought to you by Elon Musks Neuralink Monkey", " https://samsonblackburn.netlify.app/index.html")
   end
 
   #creates options menu
-  menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Improvement Suggestions 'i'\n Run a poem about Time 'l'\n Exit Program 'x'\n")
+  menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Update previous result 'i'\n Delete previous result 'l'\n Exit Program 'x'\n")
   puts menubox
   #produces a random entry ID for user results reference in function 2
   entry_id = SecureRandom.random_number(1000)
@@ -28,7 +32,7 @@ loop do
   # puts "improvement suggestions 'i'".colorize(:light_blue)
   # puts "lookup old user data 'l'".colorize(:red)
   # puts "exit program 'x'".colorize(:white)
-  user_input = gets.chomp
+  user_input = gets.chomp.downcase
   if user_input == "g"
     namehash = {}
     #run generate life expectancy code
