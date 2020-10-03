@@ -1,32 +1,51 @@
 def poem1
-    puts "You are the main character—the protagonist—the star at the center of your own unfolding story.".colorize(:light_blue)
-    sleep 5
-    puts "You’re surrounded by your supporting cast: friends and family hanging in your immediate orbit.".colorize(:light_blue)
-    sleep 5
-    puts "Scattered a little further out, a network of acquaintances who drift in and out of contact over the years.".colorize(:light_blue)
-    sleep 4
-    puts "But there in the background, faint and out of focus, are the extras. The random passersby. ".colorize(:light_blue)
-    sleep 6
-    puts "Each living a life as vivid and complex as your own.".colorize(:light_blue)
-    sleep 4
-    puts "They carry on invisibly around you, bearing the accumulated weight of their own ambitions,".colorize(:light_blue)
-    sleep 5
-    puts " friends, routines, mistakes, worries, triumphs and inherited craziness. ".colorize(:light_blue) 
-    sleep 2
-    puts "When your life moves on to the next scene, theirs flickers in place".colorize(:light_blue) 
-    sleep 5
-    puts " wrapped in a cloud of backstory and inside jokes and characters strung together".colorize(:light_blue) 
-    sleep 3
-    puts " with countless other stories you’ll never be able to see.".colorize(:light_blue) 
-    sleep 2
-    puts "That you’ll never know exists.".colorize(:light_blue)
-    sleep 5
-    puts "In which you might appear only once...".colorize(:light_blue)
-    sleep 7
-    puts "As an extra sipping coffee in the background...".colorize(:light_blue) 
-    sleep 8
-    puts "As a blur of traffic passing on the highway...".colorize(:light_blue) 
-    sleep 9
-    puts "As a lighted window at dusk...".colorize(:light_blue)
-    sleep 9
-    end
+  puts "You are the main character—the protagonist—the star at the center of your own unfolding story.".colorize(:light_blue)
+  sleep 5
+  puts "You’re surrounded by your supporting cast: friends and family hanging in your immediate orbit.".colorize(:light_blue)
+  sleep 5
+  puts "Scattered a little further out, a network of acquaintances who drift in and out of contact over the years.".colorize(:light_blue)
+  sleep 4
+  puts "But there in the background, faint and out of focus, are the extras. The random passersby. ".colorize(:light_blue)
+  sleep 6
+  puts "Each living a life as vivid and complex as your own.".colorize(:light_blue)
+  sleep 4
+  puts "They carry on invisibly around you, bearing the accumulated weight of their own ambitions,".colorize(:light_blue)
+  sleep 5
+  puts " friends, routines, mistakes, worries, triumphs and inherited craziness. ".colorize(:light_blue)
+  sleep 2
+  puts "When your life moves on to the next scene, theirs flickers in place".colorize(:light_blue)
+  sleep 5
+  puts " wrapped in a cloud of backstory and inside jokes and characters strung together".colorize(:light_blue)
+  sleep 3
+  puts " with countless other stories you’ll never be able to see.".colorize(:light_blue)
+  sleep 2
+  puts "That you’ll never know exists.".colorize(:light_blue)
+  sleep 5
+  puts "In which you might appear only once...".colorize(:light_blue)
+  sleep 7
+  puts "As an extra sipping coffee in the background...".colorize(:light_blue)
+  sleep 8
+  puts "As a blur of traffic passing on the highway...".colorize(:light_blue)
+  sleep 9
+  puts "As a lighted window at dusk...".colorize(:light_blue)
+  sleep 9
+end
+
+def poem2
+  puts "Chattering finch and water-fly".colorize(:light_green)
+  sleep 3
+  puts "Are not merrier than I;".colorize(:light_green)
+  sleep 3
+  puts "Here among the flowers I lie".colorize(:light_green)
+  sleep 3
+  puts "Laughing everlastingly.".colorize(:light_green)
+  sleep 3
+  puts "No: I may not tell the best;".colorize(:light_green)
+  sleep 3
+  puts "Surely, friends, I might have guessed".colorize(:light_green)
+  sleep 3
+  puts "Death was but the good King's jest,".colorize(:light_green)
+  sleep 3
+  puts "It was hid so carefully.".colorize(:light_green)
+  sleep 3
+end
