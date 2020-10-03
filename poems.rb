@@ -28,4 +28,5 @@ def poem1
     puts "As a blur of traffic passing on the highway...".colorize(:light_blue) 
     sleep 9
     puts "As a lighted window at dusk...".colorize(:light_blue)
+    sleep 9
     end

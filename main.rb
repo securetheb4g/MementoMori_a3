@@ -24,7 +24,7 @@ loop do
   end
 
   #creates options menu
-  menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Update previous result 'i'\n Delete previous result 'l'\n Exit Program 'x'\n")
+  menubox = TTY::Box.info ("Options Menu:\n Generate Life Expectancy 'g'\n Update previous result 'i'\n Delete previous result 'l'\n Play a poem about time 't'\n Exit Program 'x'\n")
   puts menubox
   #produces a random entry ID for user results reference in function 2
   entry_id = SecureRandom.random_number(1000)
@@ -183,16 +183,21 @@ loop do
     #   p csv_new_row[0]
     #   p csv_new_row[1]
       if idlookup == temp_entry_id_row
-        counter = counter + 1
-        puts "#{csv_new_row}"
-        puts counter
-        counter2 = 0
+        counter_id = counter
+        counter_id
+        # puts "#{csv_new_row}"
+        
+        counter2 = -1
         csv_new_headers.each do |csv_new_headers|
-            counter2 = 0 + 1
+            counter2 = counter2 + 1
+            if counter2 != counter_id
+                p csv_new_headers
+                p counter2
             CSV.open("copytest.csv", "a+") do |row|
             row << csv_new_headers
-            # delete_test_csv = FileUtils.rm Dir.glob("copytest.csv")
-            # Dir.delete("copytest.csv")
+            delete_test_csv = FileUtils.rm Dir.glob("test.csv")
+            Dir.delete("test.csv")
+            end
             end
         end
       end
@@ -247,7 +252,7 @@ loop do
     # if user_input
     #     puts "hi"
     # else
-    #     puts "fuck"
+    #     puts "far out"
     # end
 
     # fin = Time.now + 10; while Time.now < fin; puts fin - Time.now; sleep 1; system "play -n synth 0.1 square 1228" end
@@ -278,6 +283,11 @@ loop do
         end
       end
     end
+
+    elsif user_input == "t"
+        puts pastel.blue(font.write("    Sonder      "))
+        sleep 5
+        puts poem1
   elsif user_input == "x"
     exit
   else
