@@ -6,16 +6,18 @@ require "tty-link"
 require "tty-font"
 require "securerandom"
 require_relative "poems.rb"
+require "fileutils"
 gem "colorize"
 gem "tty-box"
 gem "tty-link"
 gem "tty-font"
+gem "pastel"
 
 loop do
   puts "\n"
   font = TTY::Font.new(:starwars)
   pastel = Pastel.new
-puts pastel.blue(font.write("    MEMENTO   MORI      "))
+  puts pastel.blue(font.write("    MEMENTO   MORI      "))
   #puts HTML links
   def signature
     puts TTY::Link.link_to("Brought to you by Elon Musks Neuralink Monkey", " https://samsonblackburn.netlify.app/index.html")
@@ -120,7 +122,7 @@ puts pastel.blue(font.write("    MEMENTO   MORI      "))
       #   CSV.open("test.csv", "a+") do |row|
       #     row << output_results_man.values
       #   end
-      pusharrays_csv_man = entry_id, namehash.values, output_results_man.values, generated_time.values 
+      pusharrays_csv_man = entry_id, namehash.values, output_results_man.values, generated_time.values
       CSV.open("test.csv", "a+") do |row|
         row << pusharrays_csv_man
       end
@@ -148,14 +150,14 @@ puts pastel.blue(font.write("    MEMENTO   MORI      "))
       sleep 3
       puts "These results are being saved under your unique information id: #{entry_id}"
       puts "Do not lose this number. Without it, retrieval of past data is not possible."
-      
+
       output_results_woman = {}
       output_results_woman[:total_life_yrs] = total_life_yrs
       output_results_woman[:total_life_days] = total_life_days
       output_results_woman[:total_life_hours_remaining] = total_life_hours_remaining
       generated_time = {}
       generated_time[:current_time] = Time.now
-      
+
       #   CSV.open("test.csv", "a+") do |row|
       #     row << output_results_woman.values
       #   end
@@ -165,34 +167,49 @@ puts pastel.blue(font.write("    MEMENTO   MORI      "))
       pusharrays_csv_woman = entry_id, namehash.values, output_results_woman.values, generated_time.values
       CSV.open("test.csv", "a+") do |row|
         row << pusharrays_csv_woman
+      end
+      sleep 10
+      puts signature
     end
-    sleep 10
-    puts signature
-end
-elsif user_input == "i"
-    csv_new = CSV.read('test.csv', headers: true,)
+  elsif user_input == "i"
+    csv_new = CSV.read("test.csv", headers: true)
+    csv_new_headers = CSV.read("test.csv", headers: false)
     puts "Please enter the entry_id of the Life Calculation you want to read:"
     idlookup = gets.chomp
+    counter = 0
     csv_new.each do |csv_new_row|
-        temp_entry_id_row = csv_new_row[0]
-    if idlookup == temp_entry_id_row
+      temp_entry_id_row = csv_new_row[0]
+      counter = counter + 1
+    #   p csv_new_row[0]
+    #   p csv_new_row[1]
+      if idlookup == temp_entry_id_row
+        counter = counter + 1
         puts "#{csv_new_row}"
+        puts counter
+        counter2 = 0
+        csv_new_headers.each do |csv_new_headers|
+            counter2 = 0 + 1
+            CSV.open("copytest.csv", "a+") do |row|
+            row << csv_new_headers
+            # delete_test_csv = FileUtils.rm Dir.glob("copytest.csv")
+            # Dir.delete("copytest.csv")
+            end
+        end
+      end
     end
-end
-# result = []
-# p csv
-# if csv.fetch(0, "nope") == idlookup
-#     p "win"
-# else
-#     p "lose"
-# end
+    # result = []
+    # p csv
+    # if csv.fetch(0, "nope") == idlookup
+    #     p "win"
+    # else
+    #     p "lose"
+    # end
 
-# csv.each_with_index do |row, i|
-#     row.each_with_index do |value, j|
-#         result << [i, j] if value == idlookup
-#     end
-# end
-
+    # csv.each_with_index do |row, i|
+    #     row.each_with_index do |value, j|
+    #         result << [i, j] if value == idlookup
+    #     end
+    # end
 
     # # countrow = 0
     # countcolumn = 0
@@ -238,20 +255,29 @@ end
     # puts "What would you like to change it to?"
     # newdata = gets.chomp
   elsif user_input == "l"
-    csv_new = CSV.read('test.csv', headers: true,)
+    csv_new = CSV.read("test.csv", headers: true)
+    csv_new_headers = CSV.read("test.csv", headers: false)
     puts "Please enter the entry_id of the Life Calculation you want to delete:"
-    puts "Please note this is permanent."
     idlookup = gets.chomp
+    counter = 0
     csv_new.each do |csv_new_row|
-        temp_entry_id_row = csv_new_row[0]
-    if idlookup == temp_entry_id_row
+      temp_entry_id_row = csv_new_row[0]
+      counter = counter + 1
+      if idlookup == temp_entry_id_row
+        counter = counter + 1
         puts "#{csv_new_row}"
-        to_delete = Array.new
-        CSV.open("test.csv", "a+") do |row|
-            to_delete << csv_new_row
+        puts counter
+        counter2 = 0
+        csv_new_headers.each do |csv_new_headers|
+            counter2 = 0 + 1
+            CSV.open("copytest.csv", "a+") do |row|
+            row << csv_new_headers
+            # delete_test_csv = FileUtils.rm Dir.glob("copytest.csv")
+            # Dir.delete("copytest.csv")
+            end
         end
+      end
     end
-end
   elsif user_input == "x"
     exit
   else
