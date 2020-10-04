@@ -2,9 +2,11 @@
 ### https://github.com/securetheb4g/MementoMori_a3.git ###
 
 ### R4	Provide a link to your source control repository ###	
-Design a Software Development Plan for a terminal application. The following requirements provide details of what needs to be included in this plan,	
+
 ### R5	Develop a statement of purpose and scope for your application. ### It must include:
-- describe at a high level what the application will do
+</br>
+<h4> Describe at a high level what the application will do: </h4>
+</br>
 
 <!-- ask user for age, health info, avg hours worked daily, avg sleep, then calculates average years left
 Once you can do that, you want to be able to get your program to do it until you quit, that's a loop
@@ -36,57 +38,104 @@ The ideal demographic are those of an age that can realistically comprehend thei
 
 - explain how a member of the target audience will use it
 
+The target audience will use this application to regain perspective on the number of hours left between their age and the average age of death in Australia.
 To run the application, the user will download the folder files from Github, install the relevant gems and run the application with the provided bash script.
 
 300 - 500 words
 ### R6	Develop a list of features that will be included in the application. ### 
-It must include:
-- at least THREE features
-
-- describe each feature
 
 1. Average Life Calculation
-variables, loops, error handling, scope, hashes, methods, classes. 
+variables, loops, error handling, scope, hashes, method. 
 
-The application gathers user input and stores these in variables for age, daily sleep, anger and sex. The average lifespan for Australians is used to calculate the life expectancy of the user as per the applications expected outcome. To do this the user input above is gathered and collected inside a hash of arrays. The application loops through each question, checking for valid input until progressing to the next question. Once all questions have been given valid input a calculation is run on this set of data which provides the end output expected. Total life expectancy of user in hours remaining.
+The application gathers user input and stores these in variables for age, daily sleep, anger and sex. The average lifespan for Australians is used to calculate the life expectancy of the user as per the applications expected outcome. To do this the user input above is gathered and collected inside a hash which is then pushed into a CSV to be output as arrays. The application loops through each question. Once all questions have been given valid input a calculation is run on this set of data which provides the end output expected. Total life expectancy of user in hours remaining.
 
 2. Delete your previous result
 variables, loops, error handling, scope.
 
+This feature allows the user to search for their previous life calculation with the entry ID generated in the life expectancy calculation.
+Once the entry is found this allows the user to delete that particular entry from the data set.
+
+3. See previous result using entry_id
+
+variables, loops, error handling, scope, hashes, methods.
+
+ This feature allows the user to search for their previous life calculation using the entry ID generated in the life expectancy calculation. 
+ Once the entry is found the entire dataset is output to the screen for the user to see.
+
+ 4. Play famous poems
+
+ This features allows the user to choose between two poems by requesting user input and executing the poem which aligns with the user input. Once executed the poem is output to the screen with colours and interesting generated text.
+
+ 5. Delete all user information
+
+ This feature prompts the user with a warning, once YES is input by the user. Confirmation is assumed and all data stored in the entire application is deleted permanently.
 
 
-3. Store the results and lookup later.
-
-variables, loops, error handling, scope, hashes, methods, classes. 
-
-The user input generated in the life expectancy calculation is stored and retrieved for option 3 "Data lookup". In option 3 the user is able to input their name, which is validated upon past input results. Once name is validated the user is asked what the current date is. With this information a calculation is done that takes the date the previous life expectancy calculation was generated and a user input date subtracting the hours since generation. With this figure the user can see a consistent countdown of hours remaining from initial calculation. 
-
-Note: Ensure that your features above allow you to demonstrate your understanding of the following language elements and concepts:
-- use of variables and the concept of variable scope
-- loops and conditional control structures
-- error handling
-
-Consult with your educator to check your features are sufficient .	300 words (approx. 100 words per feature)
 ### R7	Develop an outline of the user interaction and experience for the application. ###
 Your outline must include:
 - how the user will find out how to interact with / use each feature
-help menu?
+The user is prompted with each step for user input. 
+The user will require a keyboard to interact with each option as the program runs.
+For the primary life calculation the user will input data used for the calculation, they are prompted on which data is needed throughout. At the end of the calculation the user is given an entry_id which they can use to interact with the other features in the application. 
+The other features require the entry_id to see previous results and delete previous results. The last feature requires user input to delete all data within the application.
 
-- how the user will interact with / use each feature
-typing into the keyboard?
 
-- how errors will be handled by the application and displayed to the user	
-humourous messages to the screen
+<h3>how errors will be handled by the application and displayed to the user</h3>	
+The application will exit the current option menu and redisplay the original menu display.
 
 ### R8	Develop a diagram which describes the control flow of your application. ### 
 Your diagram must:
 - show the workflow/logic and/or integration of the features in your application for each feature.
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML.	
 ### R9	Develop an implementation plan which: ###
-- outlines how each feature will be implemented and a checklist of tasks for each feature
-- prioritise the implementation of different features, or checklist items within a feature
-- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
+https://trello.com/b/GNTojast
 
-Utilise a suitable project management platform to track this implementation plan
+### R10	Help Documentation. ### 
 
-> Your checklists for each feature should have at least 5 items.
+This application can be downloaded from GitHub (https://github.com/securetheb4g/MementoMori_a3) 
+
+Once you have downloaded the github file, open the installation folder.
+
+To run the file:
+1. Open bash 
+3. Install ruby on ubuntu the command is 'sudo apt install ruby-full'
+2. Make sure you are in samsonblackburn_t1a3/src/
+3. If not cd into samsonblackburn_t1a3/src/
+4. run ./run_lifecalc.sh
+5. If error 'command not found' or similar
+6. run command "chmod +x run_lifecalc.sh"
+	This will change computer permissions to allow .sh files to run unless
+	you received an error due to lack of admin privileges.
+7. once chmod +x permissions have been changed, run the run_lifecalc.sh file again to execute the program.
+
+Step 4. above is an executable bash script that has been written toinstall the required gems and run the program for you. 
+
+The gem dependencies on the app are as follows:
+```
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+gem "colorize", "~> 0.8.1"
+
+gem "tty-box", "~> 0.6.0"
+
+gem "tty-link", "~> 0.1.1"
+
+gem "tty-font", "~> 0.5.0"
+
+gem "pastel", "~> 0.8.0"
+```
+
+Ruby is required to run this program. 
+
+Any system/hardware requirements -
+OS -
+
+   This application has only been tested on a Mac running Windows 10,
+   which executes Ubuntu 20.04 LTS and VSCode WSL: Ubuntu 20.04.
+   It may not work on your operating system without troubleshooting.
