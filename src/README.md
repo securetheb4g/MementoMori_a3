@@ -139,3 +139,14 @@ OS -
    This application has only been tested on a Mac running Windows 10,
    which executes Ubuntu 20.04 LTS and VSCode WSL: Ubuntu 20.04.
    It may not work on your operating system without troubleshooting.
+
+### R11 TEST INFORMATION ###
+<br><br><br>
+Test 1:  Function:  Is the user able to complete the life expectancy calculation? And will this information be correctly written to the CSV?  </br><br>
+Process: Manual Test: Completed all user input requirements, checked CSV file to ensure data is being written.</br><br> Outcome: All data is being input and written to the CSV correctly. Although the CSV information could be formatted better and the input CSV data could be improved on in terms of data structures utilised.
+<br><br><br><br>
+Test 2.: Function: Is the user able to find their data using the entry_id generated? And will the data be deleted as per function? <br> Process: Manual Test: Entered in a pre-generated entry_id, output claims success. <br>Outcome: The data was successfully iterated through in the csv, the entry_id was linked with the correct row and the expected entry was deleted as per function requirements.
+<br><br><br><br>
+Test 3: Function: Is the user able to find their data using the entry_id generated? And can the data linked to the entry_id be correctly output to the users screen? <br><br>Process: Manual Test: Entered in a pre-generated entry_id, output information stored in CSV. <br>Outcome: The specific row of data stored in the CSV and linked to the entry_id was successfully output to the screen.
+<br><br><br><br>
+Test 4: Function: Is the user able to delete all stored data in both CSV’s? <br><br>Process: Manual Test: Responded to the output warning text “YES” program executed function and returned to main home menu. <br>Outcome: All data inside the CSV’s was successfully deleted permanently. Needed to reseed the data again for teachers ease of use.
