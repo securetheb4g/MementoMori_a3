@@ -32,7 +32,7 @@ loop do
 
   #produces a random entry ID for user results reference in function 2
   entry_id = SecureRandom.random_number(1000)
-  #SecureRandom.hex seemed like a more secure option 
+  #SecureRandom.hex seemed like a more secure option
   #but I chose random_number instead so that the Markers did not have to enter a 16hexadecimal code just to trial functions
 
   #1 GENERATE LIFE EXPECTANCY 'g'
@@ -181,7 +181,7 @@ loop do
     delete_test_csv = FileUtils.rm Dir.glob("copytest.csv")
     #Creates a fresh copytest.csv
     CSV.open("copytest.csv", "a+") do
-      end
+    end
     #Iterate over CSV and count output for accurate indexing
     counter = 0
     csv_new.each do |csv_new_row|
@@ -224,18 +224,18 @@ loop do
     end
 
     #4 PLAY FAMOUS POEMS
-elsif user_input == "t"
+  elsif user_input == "t"
     puts "Please type the number of poem you wish to play"
     puts "1: Sonder or 2: The Skeleton"
     input = gets.chomp.to_i
     if input == 1
-        puts pastel.blue(font.write("    Sonder      "))
-        sleep 5
-        puts poem1
+      puts pastel.blue(font.write("    Sonder      "))
+      sleep 5
+      puts poem1
     elsif input == 2
-        puts pastel.bright_green(font.write("    The skeleton     "))
-        sleep 5
-        puts poem2
+      puts pastel.bright_green(font.write("    The skeleton     "))
+      sleep 5
+      puts poem2
     end
 
     #5 DELETE ALL USER DATA
@@ -247,8 +247,9 @@ elsif user_input == "t"
     if confirmation == "yes"
       delete_test_csv = FileUtils.rm Dir.glob("copytest.csv")
       delete_test_csv = FileUtils.rm Dir.glob("test.csv")
+      puts "All Data Deleted."
     end
-elsif user_input == "x"
+  elsif user_input == "x"
     exit
   else
     puts "Please enter valid option"
